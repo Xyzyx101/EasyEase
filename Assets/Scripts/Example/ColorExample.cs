@@ -28,7 +28,8 @@ public class ColorExample : MonoBehaviour
         EaseInOutExp,
         EaseInOvershoot,
         EaseOutOvershoot,
-        EaseInOutOvershoot
+        EaseInOutOvershoot,
+        ElasticInOut
     }
 
     public Color Begin;
@@ -123,6 +124,9 @@ public class ColorExample : MonoBehaviour
                 break;
             case EaseFunction.EaseInOutOvershoot:
                 _Rend.material.SetColor("_Color", SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.EaseInOutOvershoot));
+                break;
+            case EaseFunction.ElasticInOut:
+                _Rend.material.SetColor("_Color", SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.ElasticInOut));
                 break;
         }
     }

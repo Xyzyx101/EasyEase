@@ -28,7 +28,8 @@ public class QuaternionExample : MonoBehaviour
         EaseInOutExp,
         EaseInOvershoot,
         EaseOutOvershoot,
-        EaseInOutOvershoot
+        EaseInOutOvershoot,
+        ElasticOut
     }
 
     public float Duration = 5f;
@@ -120,6 +121,9 @@ public class QuaternionExample : MonoBehaviour
                 break;
             case EaseFunction.EaseInOutOvershoot:
                 transform.rotation = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOutOvershoot);
+                break;
+            case EaseFunction.ElasticOut:
+                transform.rotation = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticOut);
                 break;
         }
     }

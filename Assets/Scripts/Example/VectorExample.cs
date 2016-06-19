@@ -28,7 +28,16 @@ public class VectorExample : MonoBehaviour
         EaseInOutExp,
         EaseInOvershoot,
         EaseOutOvershoot,
-        EaseInOutOvershoot
+        EaseInOutOvershoot,
+        BounceIn,
+        BounceOut,
+        BounceInOut,
+        ElasticIn,
+        ElasticOut,
+        ElasticInOut,
+        CubicBounceMix,
+        EaseInOvershootCrossFade,
+        SineBounceMix
     }
 
     public float Distance = 5f;
@@ -122,6 +131,33 @@ public class VectorExample : MonoBehaviour
                 break;
             case EaseFunction.EaseInOutOvershoot:
                 transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOutOvershoot);
+                break;
+            case EaseFunction.BounceIn:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceIn);
+                break;
+            case EaseFunction.BounceOut:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceOut);
+                break;
+            case EaseFunction.BounceInOut:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceInOut);
+                break;
+            case EaseFunction.ElasticIn:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticIn);
+                break;
+            case EaseFunction.ElasticOut:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticOut);
+                break;
+            case EaseFunction.ElasticInOut:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticInOut);
+                break;
+            case EaseFunction.CubicBounceMix:
+                transform.position = SimpleEase.Mix(_Begin, _End, normalizedTime, SimpleEase.EaseInCubic, SimpleEase.BounceOut, 0.6f);
+                break;
+            case EaseFunction.SineBounceMix:
+                transform.position = SimpleEase.Mix(_Begin, _End, normalizedTime, SimpleEase.EaseInSine, SimpleEase.BounceInOut, 0.5f);
+                break;
+            case EaseFunction.EaseInOvershootCrossFade:
+                transform.position = SimpleEase.CrossFade(_Begin, _End, normalizedTime, SimpleEase.EaseIn, SimpleEase.EaseOutOvershoot);
                 break;
         }
     }
