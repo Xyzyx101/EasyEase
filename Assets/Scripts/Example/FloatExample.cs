@@ -41,13 +41,13 @@ public class FloatExample : MonoBehaviour
                 _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.Linear);
                 break;
             case EaseFunction.EaseIn:
-                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.EaseIn);
+                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.SmoothStart2);
                 break;
             case EaseFunction.EaseOut:
-                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.EaseOut);
+                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.SmoothStop2);
                 break;
             case EaseFunction.EaseInOut:
-                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.EaseInOut);
+                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.SmoothStartStop2);
                 break;
 
         }

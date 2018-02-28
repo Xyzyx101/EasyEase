@@ -8,36 +8,45 @@ public class VectorExample : MonoBehaviour
     public enum EaseFunction
     {
         Linear,
-        EaseIn,
-        EaseInCubic,
-        EaseInQuartic,
-        EaseInQuintic,
-        EaseOut,
-        EaseOutCubic,
-        EaseOutQuartic,
-        EaseOutQuintic,
-        EaseInOut,
-        EaseInOutCubic,
-        EaseInOutQuartic,
-        EaseInOutQuintic,
-        EaseInSine,
-        EaseOutSine,
-        EaseInOutSine,
-        EaseInExp,
-        EaseOutExp,
-        EaseInOutExp,
-        EaseInOvershoot,
-        EaseOutOvershoot,
-        EaseInOutOvershoot,
-        BounceIn,
-        BounceOut,
-        BounceInOut,
-        ElasticIn,
-        ElasticOut,
-        ElasticInOut,
-        CubicBounceMix,
-        EaseInOvershootCrossFade,
-        SineBounceMix
+        SmoothStart2,
+        SmoothStart3,
+        SmoothStart4,
+        SmoothStart5,
+        SmoothStop2,
+        SmoothStop3,
+        SmoothStop4,
+        SmoothStop5,
+        SmoothStartStop2,
+        SmoothStartStop3,
+        SmoothStartStop4,
+        SmoothStartStop5,
+        ExpStart,
+        ExpStart2,
+        ExpStart4,
+        ExpStop,
+        ExpStop2,
+        ExpStop4,
+        ExpStartStop,
+        ExpStartStop2,
+        ExpStartStop4,
+        Windup,
+        Windup2,
+        Windup3,
+        Overshoot,
+        Overshoot2,
+        Overshoot3,
+        ElasticStart,
+        ElasticStart2,
+        ElasticStart3,
+        ElasticStop,
+        ElasticStop2,
+        ElasticStop3,
+        BounceStart,
+        BounceStart2,
+        BounceStart3,
+        BounceStop,
+        BounceStop2,
+        BounceStop3
     }
 
     public float Distance = 5f;
@@ -58,106 +67,130 @@ public class VectorExample : MonoBehaviour
     void Update()
     {
         _Time += Time.deltaTime;
-        if (_Time > Duration)
-        {
+        if( _Time > Duration ) {
             _Time = 0f;
         }
         float normalizedTime = _Time / Duration;
-        switch (EaseFunc)
-        {
+        switch( EaseFunc ) {
             case EaseFunction.Linear:
                 transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.Linear);
                 break;
-            case EaseFunction.EaseIn:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseIn);
+            case EaseFunction.SmoothStart2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStart2);
                 break;
-            case EaseFunction.EaseOut:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseOut);
+            case EaseFunction.SmoothStop2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStop2);
                 break;
-            case EaseFunction.EaseInOut:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOut);
+            case EaseFunction.SmoothStartStop2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStartStop2);
                 break;
-            case EaseFunction.EaseInCubic:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInCubic);
+            case EaseFunction.SmoothStart3:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStart3);
                 break;
-            case EaseFunction.EaseInQuartic:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInQuartic);
+            case EaseFunction.SmoothStart4:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStart4);
                 break;
-            case EaseFunction.EaseInQuintic:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInQuintic);
+            case EaseFunction.SmoothStart5:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStart5);
                 break;
-            case EaseFunction.EaseOutCubic:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseOutCubic);
+            case EaseFunction.SmoothStop3:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStop3);
                 break;
-            case EaseFunction.EaseOutQuartic:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseOutQuartic);
+            case EaseFunction.SmoothStop4:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStop4);
                 break;
-            case EaseFunction.EaseOutQuintic:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseOutQuintic);
+            case EaseFunction.SmoothStop5:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStop5);
                 break;
-
-            case EaseFunction.EaseInOutCubic:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOutCubic);
+            case EaseFunction.SmoothStartStop3:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStartStop3);
                 break;
-            case EaseFunction.EaseInOutQuartic:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOutQuartic);
+            case EaseFunction.SmoothStartStop4:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStartStop4);
                 break;
-            case EaseFunction.EaseInOutQuintic:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOutQuintic);
+            case EaseFunction.SmoothStartStop5:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStartStop5);
                 break;
-            case EaseFunction.EaseInSine:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInSine);
+            case EaseFunction.ExpStart:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ExpStart);
                 break;
-            case EaseFunction.EaseOutSine:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseOutSine);
+            case EaseFunction.ExpStart2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ExpStart2);
                 break;
-            case EaseFunction.EaseInOutSine:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOutSine);
+            case EaseFunction.ExpStart4:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ExpStart4);
                 break;
-            case EaseFunction.EaseInExp:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInExp);
+            case EaseFunction.ExpStop:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ExpStop);
                 break;
-            case EaseFunction.EaseOutExp:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseOutExp);
+            case EaseFunction.ExpStop2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ExpStop2);
                 break;
-            case EaseFunction.EaseInOutExp:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOutExp);
+            case EaseFunction.ExpStop4:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ExpStop4);
                 break;
-            case EaseFunction.EaseInOvershoot:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOvershoot);
+            case EaseFunction.ExpStartStop:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ExpStartStop);
                 break;
-            case EaseFunction.EaseOutOvershoot:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseOutOvershoot);
+            case EaseFunction.ExpStartStop2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ExpStartStop2);
                 break;
-            case EaseFunction.EaseInOutOvershoot:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.EaseInOutOvershoot);
+            case EaseFunction.ExpStartStop4:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ExpStartStop4);
                 break;
-            case EaseFunction.BounceIn:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceIn);
+            case EaseFunction.Windup:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.Windup);
                 break;
-            case EaseFunction.BounceOut:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceOut);
+            case EaseFunction.Windup2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.Windup2);
                 break;
-            case EaseFunction.BounceInOut:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceInOut);
+            case EaseFunction.Windup3:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.Windup3);
                 break;
-            case EaseFunction.ElasticIn:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticIn);
+            case EaseFunction.Overshoot:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.OverShoot);
                 break;
-            case EaseFunction.ElasticOut:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticOut);
+            case EaseFunction.Overshoot2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.OverShoot2);
                 break;
-            case EaseFunction.ElasticInOut:
-                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticInOut);
+            case EaseFunction.Overshoot3:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.OverShoot3);
                 break;
-            case EaseFunction.CubicBounceMix:
-                transform.position = SimpleEase.Mix(_Begin, _End, normalizedTime, SimpleEase.EaseInCubic, SimpleEase.BounceOut, 0.6f);
+            case EaseFunction.ElasticStart:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticStart);
                 break;
-            case EaseFunction.SineBounceMix:
-                transform.position = SimpleEase.Mix(_Begin, _End, normalizedTime, SimpleEase.EaseInSine, SimpleEase.BounceInOut, 0.5f);
+            case EaseFunction.ElasticStart2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticStart2);
                 break;
-            case EaseFunction.EaseInOvershootCrossFade:
-                transform.position = SimpleEase.CrossFade(_Begin, _End, normalizedTime, SimpleEase.EaseIn, SimpleEase.EaseOutOvershoot);
+            case EaseFunction.ElasticStart3:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticStart3);
+                break;
+            case EaseFunction.ElasticStop:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticStop);
+                break;
+            case EaseFunction.ElasticStop2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticStop2);
+                break;
+            case EaseFunction.ElasticStop3:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.ElasticStop3);
+                break;
+            case EaseFunction.BounceStart:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceStart);
+                break;
+            case EaseFunction.BounceStart2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceStart2);
+                break;
+            case EaseFunction.BounceStart3:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceStart3);
+                break;
+            case EaseFunction.BounceStop:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceStop);
+                break;
+            case EaseFunction.BounceStop2:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceStop2);
+                break;
+            case EaseFunction.BounceStop3:
+                transform.position = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.BounceStop3);
                 break;
         }
     }

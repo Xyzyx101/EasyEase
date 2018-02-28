@@ -3,524 +3,477 @@ using System.Collections;
 
 public class SimpleEase : MonoBehaviour
 {
-    public delegate float EaseFunc(float a, float b, float t);
+    //private static object get;
+
+    public delegate float EaseFunc(float t);
 
     public static float Ease(float a, float b, float t, EaseFunc ease)
     {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        float val = ease(a, b, t);
+        if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
+        float val = (b - a) * ease(t) + a;
         return val;
-    }
-
-    public static float CrossFade(float a, float b, float t, EaseFunc from, EaseFunc to)
-    {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        float fromVal = from(a, b, t);
-        float toVal = to(a, b, t);
-        float tFactor = -((t - 1f) * (t - 1f)) + 1f;
-        return (1f - tFactor) * fromVal + tFactor * toVal;
-    }
-
-    public static float Mix(float a, float b, float t, EaseFunc mix1, EaseFunc mix2, float mixFactor)
-    {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        float mix1Val = mix1(a, b, t);
-        float mix2Val = mix2(a, b, t);
-        return (1f - mixFactor) * mix1Val + mix2Val * mixFactor;
     }
 
     public static Vector3 Ease(Vector3 a, Vector3 b, float t, EaseFunc ease)
     {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        return (b - a) * ease(0, 1, t) + a;
-    }
-
-    public static Vector3 CrossFade(Vector3 a, Vector3 b, float t, EaseFunc from, EaseFunc to)
-    {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        return (b - a) * CrossFade(0, 1, t, from, to) + a;
-    }
-
-    public static Vector3 Mix(Vector3 a, Vector3 b, float t, EaseFunc mix1, EaseFunc mix2, float mixFactor)
-    {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        return (b - a) * Mix(0, 1, t, mix1, mix2, mixFactor) + a;
+        if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
+        return (b - a) * ease(t) + a;
     }
 
     public static Quaternion Ease(Quaternion a, Quaternion b, float t, EaseFunc ease)
     {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        return Quaternion.LerpUnclamped(a, b, ease(0, 1, t));
-    }
-
-    public static Quaternion CrossFade(Quaternion a, Quaternion b, float t, EaseFunc from, EaseFunc to)
-    {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        return Quaternion.LerpUnclamped(a, b, CrossFade(0, 1, t, from, to));
-    }
-
-    public static Quaternion Mix(Quaternion a, Quaternion b, float t, EaseFunc mix1, EaseFunc mix2, float mixFactor)
-    {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        return Quaternion.LerpUnclamped(a, b, Mix(0, 1, t, mix1, mix2, mixFactor));
+        if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
+        return Quaternion.LerpUnclamped(a, b, ease(t));
     }
 
     public static Color Ease(Color a, Color b, float t, EaseFunc ease)
     {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        float easeVal = ease(0, 1, t);
+        if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
+        float easeVal = ease(t);
         return Color.Lerp(a, b, easeVal);
     }
 
-    public static Color CrossFade(Color a, Color b, float t, EaseFunc from, EaseFunc to)
-    {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        return Color.Lerp(a, b, CrossFade(0, 1, t, from, to));
-    }
+    //public static float CrossFade(float a, float b, float t, EaseFunc from, EaseFunc to)
+    //{
+    //    if (t <= 0f) { return a; }
+    //    else if (t >= 1f) { return b; }
+    //    float fromVal = from(a, b, t);
+    //    float toVal = to(a, b, t);
+    //    float tFactor = -((t - 1f) * (t - 1f)) + 1f;
+    //    return (1f - tFactor) * fromVal + tFactor * toVal;
+    //}
 
-    public static Color Mix(Color a, Color b, float t, EaseFunc mix1, EaseFunc mix2, float mixFactor)
-    {
-        if (t <= 0f) { return a; }
-        else if (t >= 1f) { return b; }
-        return Color.Lerp(a, b, Mix(0, 1, t, mix1, mix2, mixFactor));
-    }
+    //public static float Mix(float a, float b, float t, EaseFunc mix1, EaseFunc mix2, float mixFactor)
+    //{
+    //    if (t <= 0f) { return a; }
+    //    else if (t >= 1f) { return b; }
+    //    float mix1Val = mix1(a, b, t);
+    //    float mix2Val = mix2(a, b, t);
+    //    return (1f - mixFactor) * mix1Val + mix2Val * mixFactor;
+    //}
 
-    public static EaseFunc Linear
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return (b - a) * t + a;
+    //public static Vector3 CrossFade(Vector3 a, Vector3 b, float t, EaseFunc from, EaseFunc to)
+    //{
+    //    if (t <= 0f) { return a; }
+    //    else if (t >= 1f) { return b; }
+    //    return (b - a) * CrossFade(0, 1, t, from, to) + a;
+    //}
+
+    //public static Vector3 Mix(Vector3 a, Vector3 b, float t, EaseFunc mix1, EaseFunc mix2, float mixFactor)
+    //{
+    //    if (t <= 0f) { return a; }
+    //    else if (t >= 1f) { return b; }
+    //    return (b - a) * Mix(0, 1, t, mix1, mix2, mixFactor) + a;
+    //}
+
+    //public static Quaternion CrossFade(Quaternion a, Quaternion b, float t, EaseFunc from, EaseFunc to)
+    //{
+    //    if (t <= 0f) { return a; }
+    //    else if (t >= 1f) { return b; }
+    //    return Quaternion.LerpUnclamped(a, b, CrossFade(0, 1, t, from, to));
+    //}
+
+    //public static Quaternion Mix(Quaternion a, Quaternion b, float t, EaseFunc mix1, EaseFunc mix2, float mixFactor)
+    //{
+    //    if (t <= 0f) { return a; }
+    //    else if (t >= 1f) { return b; }
+    //    return Quaternion.LerpUnclamped(a, b, Mix(0, 1, t, mix1, mix2, mixFactor));
+    //}
+
+    //public static Color CrossFade(Color a, Color b, float t, EaseFunc from, EaseFunc to)
+    //{
+    //    if (t <= 0f) { return a; }
+    //    else if (t >= 1f) { return b; }
+    //    return Color.Lerp(a, b, CrossFade(0, 1, t, from, to));
+    //}
+
+    //public static Color Mix(Color a, Color b, float t, EaseFunc mix1, EaseFunc mix2, float mixFactor)
+    //{
+    //    if (t <= 0f) { return a; }
+    //    else if (t >= 1f) { return b; }
+    //    return Color.Lerp(a, b, Mix(0, 1, t, mix1, mix2, mixFactor));
+    //}
+
+    public static EaseFunc Linear {
+        get {
+            return (t) => {
+                return t;
             };
         }
     }
 
-    public static EaseFunc EaseIn
+    public static EaseFunc CrossFade(EaseFunc r, EaseFunc s)
     {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return (b - a) * t * t + a;
+        return (t) => {
+            float q = t;
+            return (1 - q) * r(t) + q * s(t);
+        };
+    }
+
+    public static EaseFunc InOut(EaseFunc r, EaseFunc s)
+    {
+        return (t) => {
+            if( t < 0.5f ) {
+                t *= 2.0f;
+                return r(t) * 0.5f;
+            } else {
+                t = (t - 0.5f) * 2.0f;
+                return s(t) * 0.5f + 0.5f;
+            }
+        };
+
+    }
+
+    public static EaseFunc Blend(EaseFunc r, EaseFunc s, float blend)
+    {
+        if( blend <= 0 ) {
+            return (t) => {
+                return r(t);
+            };
+        } else if( blend >= 1.0f ) {
+            return (t) => {
+                return s(t);
+            };
+        } else {
+            return (t) => {
+                return (1 - blend) * r(t) + blend * s(t);
             };
         }
     }
 
-    public static EaseFunc EaseInCubic
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return (b - a) * t * t * t + a;
+    public static EaseFunc SmoothStart2 {
+        get {
+            return (t) => {
+                return t * t;
             };
         }
     }
 
-    public static EaseFunc EaseInQuartic
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return (b - a) * t * t * t * t + a;
+    public static EaseFunc SmoothStart3 {
+        get {
+            return t => {
+                return t * t * t;
             };
         }
     }
 
-    public static EaseFunc EaseInQuintic
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return (b - a) * t * t * t * t * t + a;
+    public static EaseFunc SmoothStart4 {
+        get {
+            return (t) => {
+                return t * t * t * t;
             };
         }
     }
 
-    public static EaseFunc EaseOut
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return -(b - a) * t * (t - 2f) + a;
+    public static EaseFunc SmoothStart5 {
+        get {
+            return (t) => {
+                return t * t * t * t * t; ;
             };
         }
     }
 
-    public static EaseFunc EaseOutCubic
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                t--;
-                return (b - a) * t * t * t + b + a;
+    public static EaseFunc SmoothStop2 {
+        get {
+            return (t) => {
+                return 1 - (1 - t) * (1 - t);
             };
         }
     }
 
-    public static EaseFunc EaseOutQuartic
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                t--;
-                return -(b - a) * t * t * t * t + b + a;
+    public static EaseFunc SmoothStop3 {
+        get {
+            return (t) => {
+                return 1 - (1 - t) * (1 - t) * (1 - t);
             };
         }
     }
 
-    public static EaseFunc EaseOutQuintic
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                t--;
-                return (b - a) * t * t * t * t * t + b + a;
+    public static EaseFunc SmoothStop4 {
+        get {
+            return (t) => {
+                return 1 - (1 - t) * (1 - t) * (1 - t) * (1 - t);
             };
         }
     }
 
-    public static EaseFunc EaseInOut
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                if (t < 0.5f)
-                {
-                    t *= 2f;
-                    float val = EaseIn(a, b, t) * 0.5f;
-                    return val;
-                }
-                else
-                {
-                    t = (t - 0.5f) * 2f;
-                    float val = EaseOut(a, b, t) * 0.5f + 0.5f;
-                    return val;
-                }
+    public static EaseFunc SmoothStop5 {
+        get {
+            return (t) => {
+                return 1 - (1 - t) * (1 - t) * (1 - t) * (1 - t) * (1 - t);
             };
         }
     }
 
-    public static EaseFunc EaseInOutCubic
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                if (t < 0.5f)
-                {
-                    t *= 2f;
-                    float val = EaseInCubic(a, b, t) * 0.5f;
-                    return val;
-                }
-                else
-                {
-                    t = (t - 0.5f) * 2f;
-                    float val = EaseOutCubic(a, b, t) * 0.5f + 0.5f;
-                    return val;
-                }
+    public static EaseFunc SmoothStartStop2 {
+        get {
+            return InOut(SmoothStart2, SmoothStop2);
+        }
+    }
+
+    public static EaseFunc SmoothStartStop3 {
+        get {
+            return InOut(SmoothStart3, SmoothStop3);
+        }
+    }
+
+    public static EaseFunc SmoothStartStop4 {
+        get {
+            return InOut(SmoothStart4, SmoothStop4);
+        }
+    }
+
+    public static EaseFunc SmoothStartStop5 {
+        get {
+            return InOut(SmoothStart5, SmoothStop5);
+        }
+    }
+
+    public static EaseFunc ExpStart {
+        get {
+            return (t) => {
+                return Mathf.Pow(3, 5 * (t - 1));
             };
         }
     }
 
-    public static EaseFunc EaseInOutQuartic
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                if (t < 0.5f)
-                {
-                    t *= 2f;
-                    float val = EaseInQuartic(a, b, t) * 0.5f;
-                    return val;
-                }
-                else
-                {
-                    t = (t - 0.5f) * 2f;
-                    float val = EaseOutQuartic(a, b, t) * 0.5f + 0.5f;
-                    return val;
-                }
+    public static EaseFunc ExpStart2 {
+        get {
+            return (t) => {
+                float q = ExpStart(t);
+                return q * q;
             };
         }
     }
 
-    public static EaseFunc EaseInOutQuintic
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                if (t < 0.5f)
-                {
-                    t *= 2f;
-                    float val = EaseInQuintic(a, b, t) * 0.5f;
-                    return val;
-                }
-                else
-                {
-                    t = (t - 0.5f) * 2f;
-                    float val = EaseOutQuintic(a, b, t) * 0.5f + 0.5f;
-                    return val;
-                }
+    public static EaseFunc ExpStart4 {
+        get {
+            return (t) => {
+                float q = ExpStart(t);
+                return q * q * q * q;
             };
         }
     }
 
-    public static EaseFunc EaseInSine
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return (b - a) * Mathf.Sin(t * Mathf.PI * 0.5f) + a;
+    public static EaseFunc ExpStop {
+        get {
+            return (t) => {
+                return -Mathf.Pow(3, -5 * t) + 1;
             };
         }
     }
 
-    public static EaseFunc EaseOutSine
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return (b - a) * (Mathf.Sin((t - 1) * Mathf.PI * 0.5f) + a + 1f) + a;
+    public static EaseFunc ExpStop2 {
+        get {
+            return (t) => {
+                float q = ExpStop(t);
+                return q * q;
             };
         }
     }
 
-    public static EaseFunc EaseInOutSine
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                if (t < 0.5f)
-                {
-                    t *= 2f;
-                    float val = EaseInSine(a, b, t) * 0.5f;
-                    return val;
-                }
-                else
-                {
-                    t = (t - 0.5f) * 2f;
-                    float val = EaseOutSine(a, b, t) * 0.5f + 0.5f;
-                    return val;
-                }
+    public static EaseFunc ExpStop4 {
+        get {
+            return (t) => {
+                float q = ExpStop(t);
+                return q * q * q * q;
             };
         }
     }
 
-    public static EaseFunc EaseInExp
+    public static EaseFunc ExpStartStop {
+        get {
+            return CrossFade(ExpStart, ExpStop);
+        }
+    }
+
+    public static EaseFunc ExpStartStop2 {
+        get {
+            return CrossFade(ExpStart2, ExpStop2);
+        }
+    }
+
+    public static EaseFunc ExpStartStop4 {
+        get {
+            return CrossFade(ExpStart4, ExpStop4);
+        }
+    }
+
+    /*
+  t  - in interval <0..1>
+  p0 - Start position
+  p1 - End position
+  m0 - Start tangent
+  m1 - End tangent
+*/
+    private static float CubicHermite(float t, float p0, float p1, float m0, float m1)
     {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return (b - a) * Mathf.Pow(2, 10 * (t - 1)) + a;
+        float t2 = t * t;
+        float t3 = t2 * t;
+        return (2 * t3 - 3 * t2 + 1) * p0 + (t3 - 2 * t2 + t) * m0 + (-2 * t3 + 3 * t2) * p1 + (t3 - t2) * m1;
+    }
+
+    private static float CubicHermite01(float t, float m0, float m1)
+    {
+        float t2 = t * t;
+        float t3 = t2 * t;
+        return (t3 - 2 * t2 + t) * m0 + (-2 * t3 + 3 * t2) + (t3 - t2) * m1;
+    }
+
+    public static EaseFunc Hermite {
+        get {
+            return (t) => {
+                return CubicHermite01(t, 0, 0);
             };
         }
     }
 
-    public static EaseFunc EaseOutExp
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return -(b - a) * Mathf.Pow(2, 10 * (-t)) + b + a;
+    public static EaseFunc Windup {
+        get {
+            return (t) => {
+                return CubicHermite01(t, -1.0f, 0);
             };
         }
     }
 
-    public static EaseFunc EaseInOutExp
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                if (t < 0.5f)
-                {
-                    t *= 2f;
-                    float val = EaseInExp(a, b, t) * 0.5f;
-                    return val;
-                }
-                else
-                {
-                    t = (t - 0.5f) * 2f;
-                    float val = EaseOutExp(a, b, t) * 0.5f + 0.5f;
-                    return val;
-                }
+    public static EaseFunc Windup2 {
+        get {
+            return (t) => {
+                return CubicHermite01(t, -2.0f, 0);
             };
         }
     }
 
-    public static EaseFunc EaseInOvershoot
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                const float s = 1.70158f;
-                return (b - a) * t * t * ((s + 1) * t - s) + a;
+    public static EaseFunc Windup3 {
+        get {
+            return (t) => {
+                return CubicHermite01(t, -3.0f, 0);
             };
         }
     }
 
-    public static EaseFunc EaseOutOvershoot
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                const float s = 1.70158f;
-                float q = t - 1f;
-                return (b - a) * q * q * ((s + 1) * q + s) + b + a;
+    public static EaseFunc OverShoot {
+        get {
+            return (t) => {
+                return CubicHermite01(t, 0, -1.0f);
             };
         }
     }
 
-    public static EaseFunc EaseInOutOvershoot
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                if (t < 0.5f)
-                {
-                    t *= 2f;
-                    float val = EaseInOvershoot(a, b, t) * 0.5f;
-                    return val;
-                }
-                else
-                {
-                    t = (t - 0.5f) * 2f;
-                    float val = EaseOutOvershoot(a, b, t) * 0.5f + 0.5f;
-                    return val;
-                }
+    public static EaseFunc OverShoot2 {
+        get {
+            return (t) => {
+                return CubicHermite01(t, 0, -2.0f);
             };
         }
     }
 
-    public static EaseFunc BounceIn
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return 1f - BounceOut(a, b, (1f - t));
+    public static EaseFunc OverShoot3 {
+        get {
+            return (t) => {
+                return CubicHermite01(t, 0, -3.0f);
             };
         }
     }
 
-    public static EaseFunc BounceOut
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                float val;
-                if (t < (1f / 2.75f))
-                {
-                    val = 7.5625f * t * t;
-                }
-                else if (t < (2f / 2.75f))
-                {
-                    val = 7.5625f * (t -= (1.5f / 2.75f)) * t + 0.75f;
-                }
-                else if (t < (2.5f / 2.75f))
-                {
-                    val = 7.5625f * (t -= (2.25f / 2.75f)) * t + 0.9375f;
-                }
-                else
-                {
-                    val = 7.5625f * (t -= (2.625f / 2.75f)) * t + 0.984375f;
-                }
-                return val * (b - a) + a;
+    public static EaseFunc ElasticStop {
+        get {
+            float p = 0.5f;
+            return (t) => {
+                return Mathf.Pow(2, -10 * t) * Mathf.Sin((t - p / 4) * (2 * Mathf.PI) / p) + 1;
             };
         }
     }
 
-    public static EaseFunc BounceInOut
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                return CrossFade(a, b, t, BounceIn, BounceOut);
+    public static EaseFunc ElasticStop2 {
+        get {
+            float p = 0.3f;
+            return (t) => {
+                return Mathf.Pow(2, -10 * t) * Mathf.Sin((t - p / 4) * (2 * Mathf.PI) / p) + 1;
             };
         }
     }
 
-    public static EaseFunc ElasticOut
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                float TwoPi = Mathf.PI * 2f;
-                float amplitude = 1f;
-                float period = 0.3f;
-                float s = period / TwoPi * Mathf.Asin(1f / amplitude);
-                float val = amplitude * Mathf.Pow(2f, -10f * t) * Mathf.Sin((t - s) * TwoPi / period + 1) + 1;
-                return (b - a) * val + a;
+    public static EaseFunc ElasticStop3 {
+        get {
+            float p = 0.15f;
+            return (t) => {
+                return Mathf.Pow(2, -10 * t) * Mathf.Sin((t - p / 4) * (2 * Mathf.PI) / p) + 1;
             };
         }
     }
 
-    public static EaseFunc ElasticIn
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                float TwoPi = Mathf.PI * 2f;
-                float amplitude = 1f;
-                float period = 0.3f;
-                float s = period / TwoPi * Mathf.Asin(1f / amplitude);
-                float val = amplitude * Mathf.Pow(2f, 10f * (t - 1)) * Mathf.Sin((t - s) * TwoPi / period + 1);
-                return (b - a) * val + a;
+    public static EaseFunc ElasticStart {
+        get {
+            return (t) => {
+                return 1.0f - ElasticStop(1.0f - t);
             };
         }
     }
 
-    public static EaseFunc ElasticInOut
-    {
-        get
-        {
-            return (a, b, t) =>
-            {
-                if (t < 0.5f)
-                {
-                    t *= 2f;
-                    float val = ElasticIn(a, b, t) * 0.5f;
-                    return val;
-                }
-                else
-                {
-                    t = (t - 0.5f) * 2f;
-                    float val = ElasticOut(a, b, t) * 0.5f + 0.5f;
-                    return val;
-                }
+    public static EaseFunc ElasticStart2 {
+        get {
+            return (t) => {
+                return 1.0f - ElasticStop2(1.0f - t);
+            };
+        }
+    }
+
+    public static EaseFunc ElasticStart3 {
+        get {
+            return (t) => {
+                return 1.0f - ElasticStop3(1.0f - t);
+            };
+        }
+    }
+
+    public static EaseFunc BounceStart {
+        get {
+            return (t) => {
+                float p = 0.7f;
+                return Mathf.Abs(t * t * t * Mathf.Sin((t - p / 4) * (2 * Mathf.PI) / p));
+            };
+        }
+    }
+
+    public static EaseFunc BounceStart2 {
+        get {
+            return (t) => {
+                float p = 0.5f;
+                return Mathf.Abs(t * t * Mathf.Sin((t - p / 4) * (2 * Mathf.PI) / p));
+            };
+        }
+    }
+
+    public static EaseFunc BounceStart3 {
+        get {
+            return (t) => {
+                float p = 0.4f;
+                return Mathf.Abs(t * Mathf.Sin((t - p / 4) * (2 * Mathf.PI) / p));
+            };
+        }
+    }
+
+    public static EaseFunc BounceStop {
+        get {
+            return (t) => {
+                return 1.0f - BounceStart(t - 1.0f);
+            };
+        }
+    }
+
+    public static EaseFunc BounceStop2 {
+        get {
+            return (t) => {
+                return 1.0f - BounceStart2(t - 1.0f);
+            };
+        }
+    }
+
+    public static EaseFunc BounceStop3 {
+        get {
+            return (t) => {
+                return 1.0f - BounceStart3(t - 1.0f);
             };
         }
     }
