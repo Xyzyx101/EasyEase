@@ -1,33 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SimpleEase : MonoBehaviour
+public class SimpleEase
 {
     //private static object get;
 
-    public delegate float EaseFunc(float t);
+    public delegate float Func(float t);
 
-    public static float Ease(float a, float b, float t, EaseFunc ease)
-    {
+    public static float Ease(float a, float b, float t, Func ease) {
         if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
         float val = (b - a) * ease(t) + a;
         return val;
     }
 
-    public static Vector3 Ease(Vector3 a, Vector3 b, float t, EaseFunc ease)
-    {
+    public static Vector3 Ease(Vector3 a, Vector3 b, float t, Func ease) {
         if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
         return (b - a) * ease(t) + a;
     }
 
-    public static Quaternion Ease(Quaternion a, Quaternion b, float t, EaseFunc ease)
-    {
+    public static Quaternion Ease(Quaternion a, Quaternion b, float t, Func ease) {
         if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
         return Quaternion.LerpUnclamped(a, b, ease(t));
     }
 
-    public static Color Ease(Color a, Color b, float t, EaseFunc ease)
-    {
+    public static Color Ease(Color a, Color b, float t, Func ease) {
         if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
         float easeVal = ease(t);
         return Color.Lerp(a, b, easeVal);
@@ -94,7 +90,7 @@ public class SimpleEase : MonoBehaviour
     //    return Color.Lerp(a, b, Mix(0, 1, t, mix1, mix2, mixFactor));
     //}
 
-    public static EaseFunc Linear {
+    public static Func Linear {
         get {
             return (t) => {
                 return t;
@@ -102,16 +98,14 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc CrossFade(EaseFunc r, EaseFunc s)
-    {
+    public static Func CrossFade(Func r, Func s) {
         return (t) => {
             float q = t;
             return (1 - q) * r(t) + q * s(t);
         };
     }
 
-    public static EaseFunc InOut(EaseFunc r, EaseFunc s)
-    {
+    public static Func InOut(Func r, Func s) {
         return (t) => {
             if( t < 0.5f ) {
                 t *= 2.0f;
@@ -124,8 +118,7 @@ public class SimpleEase : MonoBehaviour
 
     }
 
-    public static EaseFunc Blend(EaseFunc r, EaseFunc s, float blend)
-    {
+    public static Func Blend(Func r, Func s, float blend) {
         if( blend <= 0 ) {
             return (t) => {
                 return r(t);
@@ -141,7 +134,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc SmoothStart2 {
+    public static Func SmoothStart2 {
         get {
             return (t) => {
                 return t * t;
@@ -149,7 +142,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc SmoothStart3 {
+    public static Func SmoothStart3 {
         get {
             return t => {
                 return t * t * t;
@@ -157,7 +150,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc SmoothStart4 {
+    public static Func SmoothStart4 {
         get {
             return (t) => {
                 return t * t * t * t;
@@ -165,7 +158,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc SmoothStart5 {
+    public static Func SmoothStart5 {
         get {
             return (t) => {
                 return t * t * t * t * t; ;
@@ -173,7 +166,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc SmoothStop2 {
+    public static Func SmoothStop2 {
         get {
             return (t) => {
                 return 1 - (1 - t) * (1 - t);
@@ -181,7 +174,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc SmoothStop3 {
+    public static Func SmoothStop3 {
         get {
             return (t) => {
                 return 1 - (1 - t) * (1 - t) * (1 - t);
@@ -189,7 +182,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc SmoothStop4 {
+    public static Func SmoothStop4 {
         get {
             return (t) => {
                 return 1 - (1 - t) * (1 - t) * (1 - t) * (1 - t);
@@ -197,7 +190,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc SmoothStop5 {
+    public static Func SmoothStop5 {
         get {
             return (t) => {
                 return 1 - (1 - t) * (1 - t) * (1 - t) * (1 - t) * (1 - t);
@@ -205,31 +198,31 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc SmoothStartStop2 {
+    public static Func SmoothStartStop2 {
         get {
             return InOut(SmoothStart2, SmoothStop2);
         }
     }
 
-    public static EaseFunc SmoothStartStop3 {
+    public static Func SmoothStartStop3 {
         get {
             return InOut(SmoothStart3, SmoothStop3);
         }
     }
 
-    public static EaseFunc SmoothStartStop4 {
+    public static Func SmoothStartStop4 {
         get {
             return InOut(SmoothStart4, SmoothStop4);
         }
     }
 
-    public static EaseFunc SmoothStartStop5 {
+    public static Func SmoothStartStop5 {
         get {
             return InOut(SmoothStart5, SmoothStop5);
         }
     }
 
-    public static EaseFunc ExpStart {
+    public static Func ExpStart {
         get {
             return (t) => {
                 return Mathf.Pow(3, 5 * (t - 1));
@@ -237,7 +230,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ExpStart2 {
+    public static Func ExpStart2 {
         get {
             return (t) => {
                 float q = ExpStart(t);
@@ -246,7 +239,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ExpStart4 {
+    public static Func ExpStart4 {
         get {
             return (t) => {
                 float q = ExpStart(t);
@@ -255,7 +248,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ExpStop {
+    public static Func ExpStop {
         get {
             return (t) => {
                 return -Mathf.Pow(3, -5 * t) + 1;
@@ -263,7 +256,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ExpStop2 {
+    public static Func ExpStop2 {
         get {
             return (t) => {
                 float q = ExpStop(t);
@@ -272,7 +265,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ExpStop4 {
+    public static Func ExpStop4 {
         get {
             return (t) => {
                 float q = ExpStop(t);
@@ -281,19 +274,19 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ExpStartStop {
+    public static Func ExpStartStop {
         get {
             return CrossFade(ExpStart, ExpStop);
         }
     }
 
-    public static EaseFunc ExpStartStop2 {
+    public static Func ExpStartStop2 {
         get {
             return CrossFade(ExpStart2, ExpStop2);
         }
     }
 
-    public static EaseFunc ExpStartStop4 {
+    public static Func ExpStartStop4 {
         get {
             return CrossFade(ExpStart4, ExpStop4);
         }
@@ -306,21 +299,19 @@ public class SimpleEase : MonoBehaviour
   m0 - Start tangent
   m1 - End tangent
 */
-    private static float CubicHermite(float t, float p0, float p1, float m0, float m1)
-    {
+    private static float CubicHermite(float t, float p0, float p1, float m0, float m1) {
         float t2 = t * t;
         float t3 = t2 * t;
         return (2 * t3 - 3 * t2 + 1) * p0 + (t3 - 2 * t2 + t) * m0 + (-2 * t3 + 3 * t2) * p1 + (t3 - t2) * m1;
     }
 
-    private static float CubicHermite01(float t, float m0, float m1)
-    {
+    private static float CubicHermite01(float t, float m0, float m1) {
         float t2 = t * t;
         float t3 = t2 * t;
         return (t3 - 2 * t2 + t) * m0 + (-2 * t3 + 3 * t2) + (t3 - t2) * m1;
     }
 
-    public static EaseFunc Hermite {
+    public static Func Hermite {
         get {
             return (t) => {
                 return CubicHermite01(t, 0, 0);
@@ -328,7 +319,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc Windup {
+    public static Func Windup {
         get {
             return (t) => {
                 return CubicHermite01(t, -1.0f, 0);
@@ -336,7 +327,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc Windup2 {
+    public static Func Windup2 {
         get {
             return (t) => {
                 return CubicHermite01(t, -2.0f, 0);
@@ -344,7 +335,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc Windup3 {
+    public static Func Windup3 {
         get {
             return (t) => {
                 return CubicHermite01(t, -3.0f, 0);
@@ -352,7 +343,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc OverShoot {
+    public static Func OverShoot {
         get {
             return (t) => {
                 return CubicHermite01(t, 0, -1.0f);
@@ -360,7 +351,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc OverShoot2 {
+    public static Func OverShoot2 {
         get {
             return (t) => {
                 return CubicHermite01(t, 0, -2.0f);
@@ -368,7 +359,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc OverShoot3 {
+    public static Func OverShoot3 {
         get {
             return (t) => {
                 return CubicHermite01(t, 0, -3.0f);
@@ -376,7 +367,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ElasticStop {
+    public static Func ElasticStop {
         get {
             float p = 0.5f;
             return (t) => {
@@ -385,7 +376,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ElasticStop2 {
+    public static Func ElasticStop2 {
         get {
             float p = 0.3f;
             return (t) => {
@@ -394,7 +385,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ElasticStop3 {
+    public static Func ElasticStop3 {
         get {
             float p = 0.15f;
             return (t) => {
@@ -403,7 +394,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ElasticStart {
+    public static Func ElasticStart {
         get {
             return (t) => {
                 return 1.0f - ElasticStop(1.0f - t);
@@ -411,7 +402,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ElasticStart2 {
+    public static Func ElasticStart2 {
         get {
             return (t) => {
                 return 1.0f - ElasticStop2(1.0f - t);
@@ -419,7 +410,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc ElasticStart3 {
+    public static Func ElasticStart3 {
         get {
             return (t) => {
                 return 1.0f - ElasticStop3(1.0f - t);
@@ -427,7 +418,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc BounceStart {
+    public static Func BounceStart {
         get {
             return (t) => {
                 float p = 0.7f;
@@ -436,7 +427,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc BounceStart2 {
+    public static Func BounceStart2 {
         get {
             return (t) => {
                 float p = 0.5f;
@@ -445,7 +436,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc BounceStart3 {
+    public static Func BounceStart3 {
         get {
             return (t) => {
                 float p = 0.4f;
@@ -454,7 +445,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc BounceStop {
+    public static Func BounceStop {
         get {
             return (t) => {
                 return 1.0f - BounceStart(t - 1.0f);
@@ -462,7 +453,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc BounceStop2 {
+    public static Func BounceStop2 {
         get {
             return (t) => {
                 return 1.0f - BounceStart2(t - 1.0f);
@@ -470,7 +461,7 @@ public class SimpleEase : MonoBehaviour
         }
     }
 
-    public static EaseFunc BounceStop3 {
+    public static Func BounceStop3 {
         get {
             return (t) => {
                 return 1.0f - BounceStart3(t - 1.0f);
