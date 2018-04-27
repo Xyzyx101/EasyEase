@@ -2,22 +2,15 @@
 using System.Collections;
 using UnityEngine.UI;
 
+using SimpleEase;
+
 public class FloatExample : MonoBehaviour
 {
-
-    public enum EaseFunction
-    {
-        Linear,
-        EaseIn,
-        EaseOut,
-        EaseInOut
-    }
-
     public float Begin = 0f;
     public float End = 1f;
     public float Duration = 5f;
     public float _CurrentValue;
-    public EaseFunction EaseFunc;
+    public EaseProp EaseFunc;
 
     private float _Time;
 
@@ -35,21 +28,6 @@ public class FloatExample : MonoBehaviour
             _Time = 0f;
         }
         float normalizedTime = _Time / Duration;
-        switch (EaseFunc)
-        {
-            case EaseFunction.Linear:
-                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.Linear);
-                break;
-            case EaseFunction.EaseIn:
-                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.SmoothStart2);
-                break;
-            case EaseFunction.EaseOut:
-                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.SmoothStop2);
-                break;
-            case EaseFunction.EaseInOut:
-                _CurrentValue = SimpleEase.Ease(Begin, End, normalizedTime, SimpleEase.SmoothStartStop2);
-                break;
-
-        }
+        _CurrentValue = Easing.Ease(Begin, End, normalizedTime, EaseFunc.Func());
     }
 }
