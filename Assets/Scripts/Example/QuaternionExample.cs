@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using SimpleEase;
+using EasyEase;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +23,6 @@ public class QuaternionExample : MonoBehaviour {
             _Time = 0f;
         }
         float normalizedTime = _Time / Duration;
-        transform.rotation = Easing.Ease(_Begin, _End, normalizedTime, EaseFunc);
+        transform.rotation = Easy.Ease(_Begin, _End, normalizedTime, EaseFunc);
     }
 }

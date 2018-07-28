@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using SimpleEase;
+using EasyEase;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +23,6 @@ public class FloatExample : MonoBehaviour {
             _Time = 0f;
         }
         float normalizedTime = _Time / Duration;
-        _CurrentValue = Easing.Ease(Begin, End, normalizedTime, EaseFunc);
+        _CurrentValue = Easy.Ease(Begin, End, normalizedTime, EaseFunc);
     }
 }

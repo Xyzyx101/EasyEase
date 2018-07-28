@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace SimpleEase {
+namespace EasyEase {
     /// <summary>
     /// Use EaseProperty to add a ease type dropdown to the Unity Inspector
     /// 
@@ -9,21 +9,21 @@ namespace SimpleEase {
     /// Looking up the actual function from the enum value is slow so memoize the function delegate.
     /// </summary>
     [System.Serializable]
-    public struct EaseProperty {
+    public class EaseProperty {
         [SerializeField]
         public EaseType PropType;
-        private Easing.Func _Func;
-        public Easing.Func Func {
+        private Easy.Func _Func;
+        public Easy.Func Func {
             get {
                 if (_Func == null) {
                     var propName = PropType.ToString();
-                    var propInfo = typeof(Easing).GetProperty(propName);
-                    _Func = propInfo.GetValue(null, null) as Easing.Func;
+                    var propInfo = typeof(Easy).GetProperty(propName);
+                    _Func = propInfo.GetValue(null, null) as Easy.Func;
                 }
                 return _Func;
             }
         }
-        public static implicit operator Easing.Func(EaseProperty p) {
+        public static implicit operator Easy.Func(EaseProperty p) {
             return p.Func;
         }
         public static implicit operator EaseProperty(EaseType t) {
@@ -78,7 +78,7 @@ namespace SimpleEase {
         BounceStop3
     }
 
-    public static class Easing {
+    public static class Easy {
         public delegate float Func(float t);
 
         public static float Ease(float a, float b, float t, Func ease) {

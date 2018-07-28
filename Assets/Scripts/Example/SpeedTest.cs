@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using SimpleEase;
+using EasyEase;
 using UnityEngine;
 
 public class SpeedTest : MonoBehaviour {
@@ -33,7 +33,7 @@ public class SpeedTest : MonoBehaviour {
 		float interval = (End - Start) / (float) Iterations;
 		for (int i = 0; i < _Iterations; ++i) {
 			t += interval;
-			val = SimpleEase.Easing.Ease(Start, End, t, EaseProp);
+			val = Easy.Ease(Start, End, t, EaseProp);
 		}
 		_CompleteTime = watch.ElapsedMilliseconds;
 		Debug.Log(_Iterations + " iterations in " + _CompleteTime + "ms");

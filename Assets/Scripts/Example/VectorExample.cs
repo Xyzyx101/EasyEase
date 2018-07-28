@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using SimpleEase;
+using EasyEase;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +24,6 @@ public class VectorExample : MonoBehaviour {
             _Time = 0f;
         }
         float normalizedTime = _Time / Duration;
-        transform.position = Easing.Ease(_Begin, _End, normalizedTime, EaseFunc);
+        transform.position = Easy.Ease(_Begin, _End, normalizedTime, EaseFunc);
     }
 }
