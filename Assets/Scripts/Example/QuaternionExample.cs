@@ -2,19 +2,12 @@
 using System.Collections;
 using UnityEngine.UI;
 
+using SimpleEase;
+
 public class QuaternionExample : MonoBehaviour
 {
-
-    public enum EaseFunction
-    {
-        Linear,
-        SmoothStart2,
-        SmoothStop2,
-        ExpStartStop
-    }
-
     public float Duration = 5f;
-    public EaseFunction EaseFunc;
+    public EaseProperty EaseFunc;
 
     private float _Time;
     private Quaternion _Begin;
@@ -35,20 +28,6 @@ public class QuaternionExample : MonoBehaviour
             _Time = 0f;
         }
         float normalizedTime = _Time / Duration;
-        switch (EaseFunc)
-        {
-            case EaseFunction.Linear:
-                transform.rotation = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.Linear);
-                break;
-            case EaseFunction.SmoothStart2:
-                transform.rotation = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStart2);
-                break;
-            case EaseFunction.SmoothStop2:
-                transform.rotation = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStop2);
-                break;
-            case EaseFunction.ExpStartStop:
-                transform.rotation = SimpleEase.Ease(_Begin, _End, normalizedTime, SimpleEase.SmoothStartStop2);
-                break;
-        }
+        transform.rotation = Easing.Ease(_Begin, _End, normalizedTime, EaseFunc.Func());
     }
 }
