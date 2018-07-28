@@ -1,11 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using SimpleEase;
+using UnityEngine;
 using UnityEngine.UI;
 
-using SimpleEase;
-
-public class QuaternionExample : MonoBehaviour
-{
+public class QuaternionExample : MonoBehaviour {
     public float Duration = 5f;
     public EaseProperty EaseFunc;
 
@@ -13,21 +11,18 @@ public class QuaternionExample : MonoBehaviour
     private Quaternion _Begin;
     private Quaternion _End;
 
-    void Start()
-    {
+    void Start() {
         _Begin = transform.rotation;
         _End = Quaternion.LookRotation(-transform.forward, Vector3.up);
         _Time = Duration;
     }
 
-    void Update()
-    {
+    void Update() {
         _Time += Time.deltaTime;
-        if (_Time > Duration)
-        {
+        if (_Time > Duration) {
             _Time = 0f;
         }
         float normalizedTime = _Time / Duration;
-        transform.rotation = Easing.Ease(_Begin, _End, normalizedTime, EaseFunc.Func());
+        transform.rotation = Easing.Ease(_Begin, _End, normalizedTime, EaseFunc);
     }
 }

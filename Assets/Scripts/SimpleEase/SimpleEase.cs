@@ -1,10 +1,40 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-namespace SimpleEase
-{
-    public enum EaseProperty
-    {
+namespace SimpleEase {
+    /// <summary>
+    /// Use EaseProperty to add a ease type dropdown to the Unity Inspector
+    /// 
+    /// EaseProperty allows you to use this in a Unity inspector and it just looks like an enum dropdown
+    /// Looking up the actual function from the enum value is slow so memoize the function delegate.
+    /// </summary>
+    [System.Serializable]
+    public struct EaseProperty {
+        [SerializeField]
+        public EaseType PropType;
+        private Easing.Func _Func;
+        public Easing.Func Func {
+            get {
+                if (_Func == null) {
+                    var propName = PropType.ToString();
+                    var propInfo = typeof(Easing).GetProperty(propName);
+                    _Func = propInfo.GetValue(null, null) as Easing.Func;
+                }
+                return _Func;
+            }
+        }
+        public static implicit operator Easing.Func(EaseProperty p) {
+            return p.Func;
+        }
+        public static implicit operator EaseProperty(EaseType t) {
+            return new EaseProperty() { PropType = t };
+        }
+    }
+
+    /// <summary>
+    /// Don't use this directly. Use EaseProperty instead.
+    /// </summary>
+    public enum EaseType {
         Linear,
         SmoothStart2,
         SmoothStart3,
@@ -27,8 +57,6 @@ namespace SimpleEase
         ExpStartStop,
         ExpStartStop2,
         ExpStartStop4,
-        CubicHermite,
-        CubicHermite01,
         Hermite,
         Windup,
         Windup2,
@@ -50,28 +78,27 @@ namespace SimpleEase
         BounceStop3
     }
 
-    public static class Easing
-    {
+    public static class Easing {
         public delegate float Func(float t);
 
         public static float Ease(float a, float b, float t, Func ease) {
-            if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
+            if (t <= 0f) { return a; } else if (t >= 1f) { return b; }
             float val = (b - a) * ease(t) + a;
             return val;
         }
 
         public static Vector3 Ease(Vector3 a, Vector3 b, float t, Func ease) {
-            if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
+            if (t <= 0f) { return a; } else if (t >= 1f) { return b; }
             return (b - a) * ease(t) + a;
         }
 
         public static Quaternion Ease(Quaternion a, Quaternion b, float t, Func ease) {
-            if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
+            if (t <= 0f) { return a; } else if (t >= 1f) { return b; }
             return Quaternion.LerpUnclamped(a, b, ease(t));
         }
 
         public static Color Ease(Color a, Color b, float t, Func ease) {
-            if( t <= 0f ) { return a; } else if( t >= 1f ) { return b; }
+            if (t <= 0f) { return a; } else if (t >= 1f) { return b; }
             float easeVal = ease(t);
             return Color.Lerp(a, b, easeVal);
         }
@@ -85,7 +112,7 @@ namespace SimpleEase
 
         public static Func InOut(Func r, Func s) {
             return (t) => {
-                if( t < 0.5f ) {
+                if (t < 0.5f) {
                     t *= 2.0f;
                     return r(t) * 0.5f;
                 } else {
@@ -96,11 +123,11 @@ namespace SimpleEase
         }
 
         public static Func Blend(Func r, Func s, float blend) {
-            if( blend <= 0 ) {
+            if (blend <= 0) {
                 return (t) => {
                     return r(t);
                 };
-            } else if( blend >= 1.0f ) {
+            } else if (blend >= 1.0f) {
                 return (t) => {
                     return s(t);
                 };
@@ -146,7 +173,7 @@ namespace SimpleEase
         public static Func SmoothStart5 {
             get {
                 return (t) => {
-                    return t * t * t * t * t; ;
+                    return t * t * t * t * t;;
                 };
             }
         }
@@ -452,15 +479,6 @@ namespace SimpleEase
                     return 1.0f - BounceStart3(t - 1.0f);
                 };
             }
-        }
-    }
-
-    static class EaseMethods
-    {
-        public static Easing.Func Func(this EaseProperty e) {
-            var propName = e.ToString();
-            var propInfo = typeof(Easing).GetProperty(propName);
-            return propInfo.GetValue(null, null) as Easing.Func;
         }
     }
 }

@@ -1,11 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using SimpleEase;
+using UnityEngine;
 using UnityEngine.UI;
 
-using SimpleEase;
-
-public class FloatExample : MonoBehaviour
-{
+public class FloatExample : MonoBehaviour {
     public float Begin = 0f;
     public float End = 1f;
     public float Duration = 5f;
@@ -14,20 +12,17 @@ public class FloatExample : MonoBehaviour
 
     private float _Time;
 
-    void Start()
-    {
+    void Start() {
         _CurrentValue = Begin;
         _Time = Duration;
     }
 
-    void Update()
-    {
+    void Update() {
         _Time += Time.deltaTime;
-        if (_Time > Duration)
-        {
+        if (_Time > Duration) {
             _Time = 0f;
         }
         float normalizedTime = _Time / Duration;
-        _CurrentValue = Easing.Ease(Begin, End, normalizedTime, EaseFunc.Func());
+        _CurrentValue = Easing.Ease(Begin, End, normalizedTime, EaseFunc);
     }
 }
