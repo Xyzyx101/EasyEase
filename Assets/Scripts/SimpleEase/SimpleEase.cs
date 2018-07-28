@@ -6,19 +6,30 @@ namespace EasyEase {
     /// Use EaseProperty to add a ease type dropdown to the Unity Inspector
     /// 
     /// EaseProperty allows you to use this in a Unity inspector and it just looks like an enum dropdown
-    /// Looking up the actual function from the enum value is slow so memoize the function delegate.
+    /// Getting up the actual function from the enum value is slow so memoize the function delegate.
     /// </summary>
     [System.Serializable]
     public class EaseProperty {
         [SerializeField]
-        public EaseType PropType;
+        private EaseType _PropType;
+        public EaseType PropType {
+            get { return _PropType; }
+            set {
+                _PropType = value;
+                _Func = null;
+            }
+        }
+
+        [SerializeField]
+        private bool Dirty;
         private Easy.Func _Func;
-        public Easy.Func Func {
+        private Easy.Func Func {
             get {
-                if (_Func == null) {
-                    var propName = PropType.ToString();
+                if (_Func == null || Dirty) {
+                    Dirty = false;
+                    var propName = _PropType.ToString();
                     var propInfo = typeof(Easy).GetProperty(propName);
-                    _Func = propInfo.GetValue(null, null) as Easy.Func;
+                    _Func = propInfo.GetValue(null, null)as Easy.Func;
                 }
                 return _Func;
             }
@@ -27,7 +38,7 @@ namespace EasyEase {
             return p.Func;
         }
         public static implicit operator EaseProperty(EaseType t) {
-            return new EaseProperty() { PropType = t };
+            return new EaseProperty() { _PropType = t };
         }
     }
 
@@ -81,26 +92,69 @@ namespace EasyEase {
     public static class Easy {
         public delegate float Func(float t);
 
-        public static float Ease(float a, float b, float t, Func ease) {
-            if (t <= 0f) { return a; } else if (t >= 1f) { return b; }
-            float val = (b - a) * ease(t) + a;
+        /// <summary>
+        /// This returns a value interpolated from start to end based on the interpolation value of t
+        /// </summary>
+        /// <param name="start">Beginning on the interpolation</param>
+        /// <param name="end">End on the interpolation</param>
+        /// <param name="t">Interpolation value. Value between 0 and 1</param>
+        /// <param name="ease">Ease function or EaseProperty you want to interpolate using</param>
+        /// <returns></returns>
+        public static float Ease(float start, float end, float t, Func ease) {
+            if (t <= 0f) { return start; } else if (t >= 1f) { return end; }
+            float val = (end - start) * ease(t) + start;
             return val;
         }
 
-        public static Vector3 Ease(Vector3 a, Vector3 b, float t, Func ease) {
-            if (t <= 0f) { return a; } else if (t >= 1f) { return b; }
-            return (b - a) * ease(t) + a;
+        /// <summary>
+        /// Same usage and rules as float ease except with a Vector3
+        /// </summary>
+        /// <returns></returns>
+        public static Vector3 Ease(Vector3 start, Vector3 end, float t, Func ease) {
+            if (t <= 0f) { return start; } else if (t >= 1f) { return end; }
+            return (end - start) * ease(t) + start;
         }
 
-        public static Quaternion Ease(Quaternion a, Quaternion b, float t, Func ease) {
-            if (t <= 0f) { return a; } else if (t >= 1f) { return b; }
-            return Quaternion.LerpUnclamped(a, b, ease(t));
+        /// <summary>
+        /// Same usage and rules as float ease except with a Quaternion
+        /// </summary>
+        /// <returns></returns>
+        public static Quaternion Ease(Quaternion start, Quaternion end, float t, Func ease) {
+            if (t <= 0f) { return start; } else if (t >= 1f) { return end; }
+            return Quaternion.LerpUnclamped(start, end, ease(t));
         }
 
-        public static Color Ease(Color a, Color b, float t, Func ease) {
-            if (t <= 0f) { return a; } else if (t >= 1f) { return b; }
+        /// <summary>
+        /// Same usage and rules as float ease except with a UnityEngine.Color
+        /// </summary>
+        /// <returns></returns>
+        public static Color Ease(Color start, Color end, float t, Func ease) {
+            if (t <= 0f) { return start; } else if (t >= 1f) { return end; }
             float easeVal = ease(t);
-            return Color.Lerp(a, b, easeVal);
+            return Color.Lerp(start, end, easeVal);
+        }
+
+        /// <summary>
+        /// Time based easing.  Mostly you will be easing over time and this provides a slightly nicer set
+        /// of parameters.
+        /// </summary>
+        /// <param name="start">Beginning value</param>
+        /// <param name="end">Completed ease value</param>
+        /// <param name="startTime">Time the ease should start at</param>
+        /// <param name="totalTime">Total amount of time to get to the end value</param>
+        /// <param name="ease">Ease function or property you want to interpolate with</param>
+        /// <returns></returns>
+        public static float Ease(float start, float end, float startTime, float totalTime, Func ease) {
+            return Ease(start, end, (Time.time - startTime) / totalTime, ease);
+        }
+        public static Vector3 Ease(Vector3 start, Vector3 end, float startTime, float totalTime, Func ease) {
+            return Ease(start, end, (Time.time - startTime) / totalTime, ease);
+        }
+        public static Quaternion Ease(Quaternion start, Quaternion end, float startTime, float totalTime, Func ease) {
+            return Ease(start, end, (Time.time - startTime) / totalTime, ease);
+        }
+        public static Color Ease(Color start, Color end, float startTime, float totalTime, Func ease) {
+            return Ease(start, end, (Time.time - startTime) / totalTime, ease);
         }
 
         public static Func CrossFade(Func r, Func s) {

@@ -157,7 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 10
+  EaseFunc:
+    PropType: 10
 --- !u!23 &155604700
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -244,7 +245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 14
+  EaseFunc:
+    PropType: 14
 --- !u!23 &159369333
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -401,7 +403,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 36
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &193670676
 MonoBehaviour:
@@ -416,7 +418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 42
+  EaseFunc:
+    PropType: 40
 --- !u!23 &193670677
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -488,7 +491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &205940309
 MonoBehaviour:
@@ -503,7 +506,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 32
+  EaseFunc:
+    PropType: 30
 --- !u!23 &205940310
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -620,7 +624,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 5
-  EaseFunc: 5
+  EaseFunc:
+    PropType: 5
 --- !u!1 &281417922
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +670,8 @@ MonoBehaviour:
   End: 1
   Duration: 5
   _CurrentValue: 0
-  EaseFunc: 1
+  EaseFunc:
+    PropType: 1
 --- !u!1 &348139009
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +716,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 12
+  EaseFunc:
+    PropType: 8
 --- !u!23 &348139012
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -782,7 +789,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 33
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &363926287
 MonoBehaviour:
@@ -797,7 +804,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 39
+  EaseFunc:
+    PropType: 37
 --- !u!23 &363926288
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -869,7 +877,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &496885331
 MonoBehaviour:
@@ -884,7 +892,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 35
+  EaseFunc:
+    PropType: 33
 --- !u!23 &496885332
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -956,7 +965,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &531752955
 MonoBehaviour:
@@ -971,7 +980,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 25
+  EaseFunc:
+    PropType: 23
 --- !u!23 &531752956
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1128,7 +1138,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &600025015
 MonoBehaviour:
@@ -1143,7 +1153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 33
+  EaseFunc:
+    PropType: 31
 --- !u!23 &600025016
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1186,6 +1197,51 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 600025013}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &649228737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 649228739}
+  - component: {fileID: 649228738}
+  m_Layer: 0
+  m_Name: Speed Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &649228738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 649228737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dec35842e9e3f94887384c42bfca387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EaseProp:
+    PropType: 5
+  Start: 0
+  End: 999
+  _Iterations: 64000
+--- !u!4 &649228739
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 649228737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 21.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &720985052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 8
+  EaseFunc:
+    PropType: 8
 --- !u!23 &726851512
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1404,7 +1461,8 @@ MonoBehaviour:
   Begin: {r: 1, g: 0, b: 0, a: 0}
   End: {r: 0, g: 1, b: 0, a: 0}
   Duration: 5
-  EaseFunc: 21
+  EaseFunc:
+    PropType: 21
 --- !u!23 &761017323
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1489,7 +1547,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &765271666
 MonoBehaviour:
@@ -1504,7 +1562,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 27
+  EaseFunc:
+    PropType: 25
 --- !u!23 &765271667
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1591,7 +1650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 6
+  EaseFunc:
+    PropType: 6
 --- !u!23 &801155104
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1678,7 +1738,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 16
+  EaseFunc:
+    PropType: 16
 --- !u!23 &825064449
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1750,7 +1811,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &829233210
 MonoBehaviour:
@@ -1765,7 +1826,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 28
+  EaseFunc:
+    PropType: 26
 --- !u!23 &829233211
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1850,7 +1912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 5
-  EaseFunc: 1
+  EaseFunc:
+    PropType: 1
 --- !u!1 &857507325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,7 +1958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 7
+  EaseFunc:
+    PropType: 7
 --- !u!23 &857507328
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1982,7 +2046,8 @@ MonoBehaviour:
   End: 1
   Duration: 5
   _CurrentValue: 0
-  EaseFunc: 0
+  EaseFunc:
+    PropType: 0
 --- !u!1 &897246700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,7 +2138,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 939452695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
@@ -2092,7 +2157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 0
+  EaseFunc:
+    PropType: 0
 --- !u!23 &939452698
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2164,7 +2230,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1027911223
 MonoBehaviour:
@@ -2179,7 +2245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 30
+  EaseFunc:
+    PropType: 28
 --- !u!23 &1027911224
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2251,7 +2318,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1041733203
 MonoBehaviour:
@@ -2266,7 +2333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 37
+  EaseFunc:
+    PropType: 35
 --- !u!23 &1041733204
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2338,7 +2406,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1044561953
 MonoBehaviour:
@@ -2353,7 +2421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 38
+  EaseFunc:
+    PropType: 36
 --- !u!23 &1044561954
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2440,7 +2509,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 9
+  EaseFunc:
+    PropType: 9
 --- !u!23 &1169797935
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2525,7 +2595,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 5
-  EaseFunc: 3
+  EaseFunc:
+    PropType: 19
 --- !u!1 &1225210941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,7 +2626,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1225210943
 MonoBehaviour:
@@ -2570,7 +2641,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 34
+  EaseFunc:
+    PropType: 32
 --- !u!23 &1225210944
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2657,6 +2729,7 @@ Transform:
   - {fileID: 825064447}
   - {fileID: 1475303827}
   - {fileID: 2020035284}
+  - {fileID: 1779113393}
   - {fileID: 531752954}
   - {fileID: 2041317441}
   - {fileID: 765271665}
@@ -2722,7 +2795,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 2
+  EaseFunc:
+    PropType: 2
 --- !u!23 &1318734001
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2910,7 +2984,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1360209943
 MonoBehaviour:
@@ -2925,7 +2999,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 29
+  EaseFunc:
+    PropType: 27
 --- !u!23 &1360209944
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2968,47 +3043,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1360209941}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1395830364
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1395830366}
-  - component: {fileID: 1395830365}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1395830365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1395830364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c3d97353d7f1342a55ffcfc64beeb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MyEaseFunc: 0
---- !u!4 &1395830366
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1395830364}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1436006203
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,7 +3087,8 @@ MonoBehaviour:
   End: 1
   Duration: 5
   _CurrentValue: 0
-  EaseFunc: 5
+  EaseFunc:
+    PropType: 5
 --- !u!1 &1453041563
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,7 +3133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 11
+  EaseFunc:
+    PropType: 7
 --- !u!23 &1453041566
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3185,7 +3221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 17
+  EaseFunc:
+    PropType: 14
 --- !u!23 &1475303829
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3274,7 +3311,8 @@ MonoBehaviour:
   Begin: {r: 1, g: 0, b: 0, a: 0}
   End: {r: 0, g: 1, b: 0, a: 0}
   Duration: 5
-  EaseFunc: 5
+  EaseFunc:
+    PropType: 5
 --- !u!23 &1543044944
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3358,7 +3396,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 5
-  EaseFunc: 0
+  EaseFunc:
+    PropType: 0
 --- !u!4 &1551124943
 Transform:
   m_ObjectHideFlags: 0
@@ -3417,7 +3456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 1
+  EaseFunc:
+    PropType: 1
 --- !u!23 &1619548816
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3578,7 +3618,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1650271573
 MonoBehaviour:
@@ -3593,7 +3633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 40
+  EaseFunc:
+    PropType: 38
 --- !u!23 &1650271574
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3712,7 +3753,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 15
+  EaseFunc:
+    PropType: 15
 --- !u!23 &1720009972
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3799,7 +3841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 13
+  EaseFunc:
+    PropType: 13
 --- !u!23 &1742678627
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3871,7 +3914,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1754660103
 MonoBehaviour:
@@ -3886,7 +3929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 31
+  EaseFunc:
+    PropType: 29
 --- !u!23 &1754660104
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3929,6 +3973,94 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1754660101}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1779113392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1779113393}
+  - component: {fileID: 1779113396}
+  - component: {fileID: 1779113395}
+  - component: {fileID: 1779113394}
+  m_Layer: 0
+  m_Name: Hermite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1779113393
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1779113392}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2, z: -10.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1275713523}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1779113394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1779113392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9705a40635c12e643b67cc7089b7b131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Distance: 5
+  Duration: 5
+  EaseFunc:
+    PropType: 22
+--- !u!23 &1779113395
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1779113392}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1779113396
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1779113392}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1857601176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3941,7 +4073,7 @@ GameObject:
   - component: {fileID: 1857601179}
   - component: {fileID: 1857601178}
   m_Layer: 0
-  m_Name: SmoothStart4
+  m_Name: SmoothStart5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3973,7 +4105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 4
+  EaseFunc:
+    PropType: 4
 --- !u!23 &1857601179
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4060,7 +4193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 3
+  EaseFunc:
+    PropType: 3
 --- !u!23 &1940459973
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4132,7 +4266,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1952591726
 MonoBehaviour:
@@ -4147,7 +4281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 41
+  EaseFunc:
+    PropType: 39
 --- !u!23 &1952591727
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4234,7 +4369,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 5
+  EaseFunc:
+    PropType: 5
 --- !u!23 &1990657134
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4321,7 +4457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 18
+  EaseFunc:
+    PropType: 15
 --- !u!23 &2020035286
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4393,7 +4530,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2041317442
 MonoBehaviour:
@@ -4408,7 +4545,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 26
+  EaseFunc:
+    PropType: 24
 --- !u!23 &2041317443
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4480,7 +4618,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1275713523}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2091403016
 MonoBehaviour:
@@ -4495,7 +4633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 5
   Duration: 5
-  EaseFunc: 36
+  EaseFunc:
+    PropType: 34
 --- !u!23 &2091403017
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4584,7 +4723,8 @@ MonoBehaviour:
   Begin: {r: 1, g: 0, b: 0, a: 0}
   End: {r: 0, g: 1, b: 0, a: 0}
   Duration: 5
-  EaseFunc: 0
+  EaseFunc:
+    PropType: 0
 --- !u!23 &2091525708
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4686,7 +4826,8 @@ MonoBehaviour:
   Begin: {r: 1, g: 0, b: 0, a: 0}
   End: {r: 0, g: 1, b: 0, a: 0}
   Duration: 5
-  EaseFunc: 1
+  EaseFunc:
+    PropType: 1
 --- !u!23 &2121612331
 MeshRenderer:
   m_ObjectHideFlags: 0

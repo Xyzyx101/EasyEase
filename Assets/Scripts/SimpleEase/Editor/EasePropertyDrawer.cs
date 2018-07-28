@@ -8,7 +8,13 @@ public class EasePropertyDrawer : PropertyDrawer {
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 		EditorGUI.BeginProperty(position, label, property);
 		position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-		EditorGUI.PropertyField(position, property.FindPropertyRelative("PropType"), GUIContent.none);
+		EditorGUI.BeginChangeCheck(); {
+			EditorGUI.PropertyField(position, property.FindPropertyRelative("_PropType"), GUIContent.none);
+		}
+		if (EditorGUI.EndChangeCheck()) {
+			var x = property.FindPropertyRelative("Dirty");
+			property.FindPropertyRelative("Dirty").boolValue = true;
+		}
 		EditorGUI.EndProperty();
 	}
 }

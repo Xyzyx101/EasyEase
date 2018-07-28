@@ -25,6 +25,6 @@ public class ColorExample : MonoBehaviour {
             _Time = 0f;
         }
         float normalizedTime = _Time / Duration;
-        _Rend.material.SetColor("_Color", Easy.Ease(Begin, End, normalizedTime, EaseFunc.Func));
+        _Rend.material.SetColor("_Color", Easy.Ease(Begin, End, normalizedTime, EaseFunc));
     }
 }
