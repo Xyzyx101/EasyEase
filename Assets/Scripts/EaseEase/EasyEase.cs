@@ -6,10 +6,14 @@ namespace EasyEase {
     /// Use EaseProperty to add a ease type dropdown to the Unity Inspector
     /// 
     /// EaseProperty allows you to use this in a Unity inspector and it just looks like an enum dropdown
-    /// Getting up the actual function from the enum value is slow so memoize the function delegate.
+    /// Getting up the actual function from the enum value is slow so I memoize the function delegate.
     /// </summary>
     [System.Serializable]
     public class EaseProperty {
+        public EaseProperty(EaseType t) {
+            PropType = t;
+        }
+
         [SerializeField]
         private EaseType _PropType;
         public EaseType PropType {
@@ -38,7 +42,7 @@ namespace EasyEase {
             return p.Func;
         }
         public static implicit operator EaseProperty(EaseType t) {
-            return new EaseProperty() { _PropType = t };
+            return new EaseProperty(t);
         }
     }
 

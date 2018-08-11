@@ -8,8 +8,8 @@ using UnityEngine.TestTools;
 public class SimpleEase_Test {
 	static List<EaseProperty> GetAllEaseTypes() {
 		var allTypes = new List<EaseProperty>();
-		foreach (var t in (EaseType[]) EaseType.GetValues(typeof(EaseType))) {
-			allTypes.Add(new EaseProperty() { PropType = t });
+		foreach (var t in (EaseType[])EaseType.GetValues(typeof(EaseType))) {
+			allTypes.Add(new EaseProperty(t));
 		}
 		return allTypes;
 	}

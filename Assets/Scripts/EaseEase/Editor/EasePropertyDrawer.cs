@@ -12,7 +12,6 @@ public class EasePropertyDrawer : PropertyDrawer {
 			EditorGUI.PropertyField(position, property.FindPropertyRelative("_PropType"), GUIContent.none);
 		}
 		if (EditorGUI.EndChangeCheck()) {
-			var x = property.FindPropertyRelative("Dirty");
 			property.FindPropertyRelative("Dirty").boolValue = true;
 		}
 		EditorGUI.EndProperty();
